@@ -4,8 +4,8 @@
 
 # Deploy Netflix Clone on Cloud using Jenkins - DevSecOps Project!
 
-Deploy T2.Large Instance for the Jenkins,SonarCube And Trivy
-Add the security group such as port 80, Then Port 443 and 22
+Deploy T2.Large Instance(Ubuntu Server) for the Jenkins,SonarCube And Trivy >> This is a common Server only 1 Ec2 instance 
+Add the security group such as port 80, Then Port 443 and 22 for SSH
 Add storage as 25 Gb
 Update the package using command sudo apt update >> This will update the package 
 Clone the project using command git clone https://github.com/devranj/Netflix-Clone-DevSecops.git
@@ -16,7 +16,7 @@ sudo usermod -aG docker ubuntu  # Replace with your system's username, e.g., 'ub
 newgrp docker
 sudo chmod 777 /var/run/docker.sock 
 git clone https://github.com/devranj/DevSecOps-Project.git
-docker build -t netflix .
+docker build -t netflix . (. means current directory)
 docker run -d -p 8081:80 
 
 Install firewall 
@@ -355,8 +355,10 @@ pipeline{
     }
 }
 
+********************************************************************First Box Completed *******************************************************************
 
-Now We need to set Up A Monitoring Server, in that case set up a dedicated servere 
+
+Now We need to set Up A Monitoring Server, in that case set up a dedicated servere >>> Here another EC2 Instance launch 
 Install T2.Medium server >> ubuntu
 
 Install Prometheus and Grafana:
@@ -540,7 +542,7 @@ curl -LO https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable
 sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
 kubectl version --client
 sudo hostnamectl set-hostname K8s-Master
-sudo hostnamectl set-hostname K8s-Worker
+suado hostnamectl set-hostnme K8s-Worker
 sudo apt-get update 
 sudo apt-get install -y docker.io
 sudo usermod –aG docker Ubuntu
